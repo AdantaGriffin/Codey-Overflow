@@ -9,7 +9,7 @@ function App() {
       <div className="Header"><h1>Silly Kitty</h1></div>
       <div className="Image">
         <figure>
-          <img src="https://www.shutterstock.com/image-photo/closeup-portrait-fluffy-purebred-cat-600nw-2447243735.jpg" alt="image" width="400px" height="400px"/>
+          <img src="https://www.shutterstock.com/image-photo/closeup-portrait-fluffy-purebred-cat-600nw-2447243735.jpg" width="400px" height="400px"/>
           <figcaption>Cornileous say cheese!</figcaption>
         </figure>
       </div>

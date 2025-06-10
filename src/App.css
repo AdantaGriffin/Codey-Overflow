@@ -1,8 +1,6 @@
 
 .Card{
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
+  display: block;
 }
 .Header, .Image{
   text-align: center;

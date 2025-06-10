@@ -20,7 +20,7 @@ function App() {
       <div className="Card">
         {
           comments.map(comment => 
-          <Card className="card" commentObject={comment}/>
+          <Card commentObject={comment}/>
           )
         }
       </div>

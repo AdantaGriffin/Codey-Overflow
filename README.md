@@ -1,70 +1,130 @@
-# Getting Started with Create React App
+# Codey Overflow
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of contents
+* [Overview](#overview)
+* [Setup](#setup)
+* [Built with](#built-with)
+* [Steps](#steps)
+* [Challenges and Credits](#challenges-and-credits)
 
-## Available Scripts
+## Overview
+In this project, we will build the beginnings of a web forum! A forum is an online discussion board where users can exchange their opinions on a variety of topics. The most important component of a forum is the comment section. This is what we’ll work on in this project.
 
-In the project directory, you can run:
+In building this application, you will sharpen your skills in React components by practicing using props as well as defining, rendering, and referencing components.
 
-### `npm start`
+## Setup
+Create a react <code>(npx create-react-app app-name)</code>app the follow the provided steps below
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Built with
+* HTML
+* CSS (course given)
+* JavaScript (course given)
+* Git, GitHub and GitHub Pages
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Steps
+1.  >Take a look at the files provided for this project.
 
-### `npm test`
+There is a file named <strong>commentData.js</strong> which contains an array of comment objects with <code>profileImg</code>, <code>username</code>, and <code>comment</code> as its properties. You will use this to populate the comments on the forum.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Your comment section will be composed of <code>Card</code> components, which will be comprised of smaller <code>Header</code> and <code>Body</code> child components.
 
-### `npm run build`
+Next, <strong>App.js</strong> will contain the top-level component. The data in <strong>commentData.js</strong> will be retrieved in <code>App.js</code> and flow downward from <code>App</code> to <code>Card</code> to <code>Header</code> and <code>Body</code>.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<strong>index.js</strong> will render the <code>App</code> component. <strong>style.css</strong> and <strong>index.html</strong> handle the markup and styling of the forum.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Once you feel comfortable with the structure of this application, move on to the next checkpoint.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2.  >Let’s start with the smallest component, the <code>Body</code>. The <code>Body</code> is responsible for showing the comments that users have written. It will work with the <code>comment</code> property of our passed-down <code>comments</code> object extracted from <strong>commentData.js</strong>.
 
-### `npm run eject`
+Open up <strong>Body.js</strong> and define your <code>Body</code> component.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+This component should receive <code>props</code>. This <code>props</code> object contains all of the data on our comment, such as the username, profile image, and comment, but the <code>Body</code> works specifically with only the <code>comment</code> property.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Have the component return a <code>< p ></code> element that contains the comment property from <code>props</code>.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3.  >Export the <code>Body</code> component after its function definition so that it can be imported and used in <strong>Card.js</strong>.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4.  >Open <strong>Header.js</strong> and define your Header component.
 
-## Learn More
+This component will be responsible for the <code>profileImg</code> and <code>username</code> properties of our passed-down <code>comments</code> object.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The <code>Header</code> component should receive <code>props</code>. The component should return two elements, an <code>< img ></code> element whose <code>src</code> attribute will receive the <code>profileImg</code> property from <code>props</code>, and a <code>< h1 ></code> element, displaying <code>username</code> from <code>props</code>.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+5.  >Export the <code>Header</code> component after its function definition so that it can be imported and used in <strong>Card.js</strong>.
 
-### Code Splitting
+6.  >Great job! Let’s take a brief detour back to <strong>App.js</strong>.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Currently, the <code>App</code> component is empty. This is the top-level component and it is responsible for returning the interface to be rendered. In this case, it will be returning an instance of the <code>Card</code> component for every comment in <strong>commentData.js</strong>.
 
-### Analyzing the Bundle Size
+In the <code>App</code> component body, map over the <code>comments</code> array with the argument named <code>comment</code> and return an instance of the <code>Card</code> component.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+For each component, give it an attribute named <code>commentObject</code> and the value <code>{comment}</code>.
 
-### Making a Progressive Web App
+7.  >Nice! You’ve set up <code>App</code> to pass down information to the <code>Card</code> component. Let’s put the pieces together.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Open <strong>Card.js</strong> and import the <code>Header</code> and <code>Body</code> components. <code>Card</code> will be the outer “shell” that contains our two smaller components: <code>Card</code> is the parent, and <code>Header</code> and <code>Body</code> are the child components.
 
-### Advanced Configuration
+Begin defining the <code>Card</code> component. <code>Card</code> should receive <code>props</code>.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<code>Card</code> should return an instance of the <code>Header</code> component, and an instance of the <code>Body</code> component.
 
-### Deployment
+8.  >Previously in <strong>App.js</strong>, you’ve passed down a <code>commentObject</code> attribute to <code>Card</code> which contains an object with three properties (<code>profileImg</code>, <code>username</code>, and <code>comment</code>).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+It’s time to access those and finally pass them to the children components: <code>Header</code> and <code>Body</code>.
 
-### `npm run build` fails to minify
+<code>Header</code> expects two props, <code>profileImg</code> and <code>username</code>.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Give the <code>Header</code> instance an attribute named <code>profileImg</code> and the value of <code>props.commentObject.profileImg</code>.
+
+9.  >Next, give the <code>Header</code> instance an attribute named <code>username</code> and the value of <code>props.commentObject.username</code>.
+
+10. >The <code>Body</code> instance expects a <code>comment</code> prop.
+
+Give the <code>Body</code> instance an attribute named <code>comment</code> and the value of <code>props.commentObject.comment</code>.
+
+11. >Now, export the <code>Card</code> component so it can be imported and used.
+
+12. >Open up <strong>App.js</strong> again, and import the <code>Card</code> component which is now defined and exported.
+
+13. >Then, export the <code>App</code> component.
+
+14. >Open up <strong>index.js</strong> and import the <code>App</code> component.
+
+15. >As you may recall, <strong>index.js</strong> is largely responsible for only rendering the <code>App</code> component.
+
+Use <code>.createRoot()</code> to supply a container where you will render the <code>App</code> component. Then, use <code>.render()</code> to render it into the DOM!
+
+If you’ve succeeded, you should see three comments rendered on the web browser, engaging in a riveting discussion about animals.
+
+
+
+## Challenges and Credits
+This project was a challenge from the Full Stack Developer course on Codeacademy's website.
+<br>
+**JavaScript and CSS codes were provided and we had to code the HTML.**
+<br>
+
+## Credits
+www.codecademy.com
+### License
+MIT License
+
+Copyright (c) 2025 Adanta Griffin
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
